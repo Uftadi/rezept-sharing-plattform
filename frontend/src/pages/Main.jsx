@@ -1,24 +1,32 @@
 import React from 'react'
 import { useState, useEffect, useContext } from 'react';
 import { RecipeContext } from '../context/RecipeContext';
+import Navbar from '../components/Navbar';
 
 function Main() {
-    const {recipes, setRecipes} = useContext(RecipeContext);
+    const {recipes, setRecipes, isLoading} = useContext(RecipeContext);
 
 
 
   return (
     <div>
-        <ul>
-            {console.log(recipes.meals[0].strMeal)}
-            {recipes.meals.map(recipe => (
-                <li>
-                    <p>{recipe.strMeal}</p>
-                    <img src={recipe.strMealThumb} alt="" />
-                </li>
-            ))}
-        </ul>
-        {console.log(recipes)}
+        <Navbar />
+        {isLoading ? (
+                <ul>
+                    {recipes && recipes.length > 0 ? (
+                        recipes.map(recipe => (
+                            <li key={recipe.idMeal}>
+                                <p>{recipe.strMeal}</p>
+                                <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+                            </li>
+                        ))
+                    ) : (
+                        <p>No recipes available</p>
+                    )}
+                </ul>
+            ) : (
+                <p>Loading...</p>
+            )}
     </div>
   )
 }
