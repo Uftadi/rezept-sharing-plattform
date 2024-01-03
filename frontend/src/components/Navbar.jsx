@@ -21,6 +21,7 @@ function Navbar() {
 
   return (
     <div>
+       
         {isLoading ? (
         <ul>
             {categories.categories.map(item => (
@@ -35,6 +36,7 @@ function Navbar() {
         ) : (
         <p>Loading...</p>
         )}
+         <h2>{category}</h2>
     </div>
   )
 }

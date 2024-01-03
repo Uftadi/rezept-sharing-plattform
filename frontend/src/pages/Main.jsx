@@ -11,6 +11,7 @@ function Main() {
   return (
     <div>
         <Navbar />
+        
         {isLoading ? (
                 <ul>
                     {recipes && recipes.length > 0 ? (

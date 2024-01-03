@@ -1,9 +1,12 @@
 import React from 'react'
 
 function SearchBar() {
+  
+
+
   return (
-    <div>SearcBar</div>
+    <div>SearchBar</div>
   )
 }
 
-export default SearcBar
+export default SearchBar
