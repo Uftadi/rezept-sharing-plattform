@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
             name: String,
             required: true
         },
-
     }
 })
 const RecipesSchema = mongoose.model('Recipes', userSchema)
