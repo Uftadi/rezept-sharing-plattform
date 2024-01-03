@@ -20,23 +20,20 @@ function Navbar() {
     },[])
 
   return (
-    <div>
-       
+    <div className='mb-[30px]'>
         {isLoading ? (
-        <ul>
+        <ul className='flex gap-[10px] justify-center'>
             {categories.categories.map(item => (
-            <li key={item.idCategory}>
-                
+            <li key={item.idCategory} className='cursor-pointer'>
                 <p onClick={() => setCategory(item.strCategory)}>{item.strCategory}</p>
                 {console.log(category)}
-                
             </li>
             ))}
         </ul>
         ) : (
         <p>Loading...</p>
         )}
-         <h2>{category}</h2>
+         <h2 className="text-3xl font-bold underline my-[15px]">{category}</h2>
     </div>
   )
 }
