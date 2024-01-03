@@ -1,7 +1,8 @@
 import {Router} from 'express'
-import { getAllRecipes } from '../controller/rezeptControllers.js'
+import { getAllRecipes, createRecipe } from '../controller/rezeptControllers.js'
 const rezeptRouter = Router()
 
 rezeptRouter.get("/", getAllRecipes )
+rezeptRouter.post("/", createRecipe)
 
 export default rezeptRouter

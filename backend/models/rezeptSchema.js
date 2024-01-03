@@ -1,13 +1,29 @@
 import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
-    user: {
-        userName: {
-            name: String,
-            required: true
+        firstName: {
+            type: String,
+            default: "Edie"
         },
-    }
-})
-const RecipesSchema = mongoose.model('Recipes', userSchema)
+        lastName: {
+            type: String,
+            default: "Flowers"
+        },
+        email: {
+            type: String,
+            default: "edieflowers@gmail.com"
+        },
+        recipes: [
+            {
+               title: {type: String, required: true},
+               ingredients: {type: String, required: true},
+               steps: {type: String, required: true},
+               time: {type: Number, required: true},
+               difficulty: {type: String, required: true}
+            }
+        ]
+    })
 
-export default RecipesSchema
+const UserSchema = mongoose.model('Users', userSchema)
+
+export default UserSchema
