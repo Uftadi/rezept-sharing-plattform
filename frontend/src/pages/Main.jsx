@@ -9,6 +9,8 @@ function Main() {
 	const { recipes, setRecipes, isLoading, setMealId } =
 		useContext(RecipeContext);
 
+        
+
 	return (
 		<div>
 			<Navbar />
