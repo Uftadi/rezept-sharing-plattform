@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const url = "http://localhost:3001";
 
@@ -178,6 +179,7 @@ const User = () => {
 						))}
 					</tbody>
 				</table>
+				<Link to="/">back to Main</Link>
 			</div>
 		</>
 	);
