@@ -59,7 +59,3 @@ body {
 .recipe-transition {
   transition: all ease-in-out 0.5s;
 }
-
-.svg-heart-container:hover .svg-heart * {
-    fill: white;
-  }
