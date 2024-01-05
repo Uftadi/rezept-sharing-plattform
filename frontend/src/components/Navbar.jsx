@@ -33,6 +33,7 @@ function Navbar() {
 	}, []);
 
 	return (
+
 		<section>
 			<div className="border-border-gray border-b-[1px]">
 				<div className="flex justify-between items-center pb-[20px] max-container-nav padding-container-nav">
@@ -94,6 +95,7 @@ function Navbar() {
 				)}
 			</div>
 		</section>
+
 	);
 }
 

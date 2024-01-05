@@ -8,6 +8,7 @@ import heart from "../assets/Favorite_heart.svg";
 import star from "../assets/Star-border.svg"
 
 function Main() {
+
 	const { recipes, setRecipes, isLoading, setMealId, category } =
 		useContext(RecipeContext);
 
@@ -57,6 +58,7 @@ function Main() {
 			</div>
 		</div>
 	);
+ (change)
 }
 
 export default Main;
