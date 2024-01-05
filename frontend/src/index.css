@@ -35,15 +35,16 @@ body {
   font-family: 'Italianno', cursive;
 }
 
-img {
-  width: 200px;
-  height: 200px;
-}
 
 @layer utilities {
   .max-container {
     @apply mx-auto max-w-[1240px];
   }
+
+  .padding-container {
+    @apply px-[75px] py-[20px];
+  }
+
   .max-container-nav {
     @apply mx-auto max-w-[1095px];
   }
@@ -52,3 +53,11 @@ img {
     @apply px-[120px] py-[20px];
   }
 }
+
+.recipe-transition {
+  transition: all ease-in-out 0.5s;
+}
+
+.svg-heart-container:hover .svg-heart * {
+    fill: white;
+  }

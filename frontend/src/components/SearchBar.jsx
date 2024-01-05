@@ -25,7 +25,7 @@ function SearchBar() {
   };
 
   return (
-    <div className='my-[20px] text-center'>
+    <div className='mt-[50px] mb-[20px] text-center'>
       <form action="" className='border-black border-b-[2px] inline-block'>
         <img className='w-[24px] h-[24px] inline' src={search} alt="search" />
           <input 
