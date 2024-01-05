@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
 	const [categories, setCategories] = useState([]);
-	const { isLoading, setIsLoading, setCategory, category } =
-		useContext(RecipeContext);
+	const { isLoading, setIsLoading, setCategory, category } = useContext(RecipeContext);
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
 
@@ -21,6 +20,7 @@ function Navbar() {
 			setIsLoading(true);
 		};
 		fetchCategories();
+		
 		const fetchUserName = async () => {
 			const response = await fetch("http://localhost:3001/");
 			const data = await response.json();
@@ -28,7 +28,7 @@ function Navbar() {
 			setUserFirstName(data[0].firstName);
 			setUserLastName(data[0].lastName);
 		};
-		fetchUserName();
+		fetchUserName(); 
 	}, []);
 
 	return (
