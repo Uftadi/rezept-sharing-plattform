@@ -6,13 +6,18 @@ import SearchBar from "../components/SearchBar";
 import { Link } from "react-router-dom";
 
 function Main() {
-	const { recipes, setRecipes, isLoading, setMealId } =
+	const { recipes, setRecipes, isLoading, setMealId, category } =
 		useContext(RecipeContext);
 
 	return (
 		<div>
 			<Navbar />
 			<SearchBar />
+			<div>
+			<div className="text-center">
+				<h2 className="text-[32px] font-medium my-[50px]">{category}</h2>
+			
+			</div>
 			{isLoading ? (
 				<ul className="flex flex-wrap gap-[10px] items-end justify-center">
 					{recipes && recipes.length > 0 ? (
@@ -31,6 +36,7 @@ function Main() {
 			) : (
 				<p>Loading...</p>
 			)}
+			</div>
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext, useState } from "react";
 import { RecipeContext } from '../context/RecipeContext';
+import search from "../assets/Search.svg"
 
 
 
@@ -24,21 +25,19 @@ function SearchBar() {
   };
 
   return (
-    <div className='my-[20px]'>
-      <form action="">
-        
+    <div className='my-[20px] text-center'>
+      <form action="" className='border-black border-b-[2px] inline-block'>
+        <img className='w-[24px] h-[24px] inline' src={search} alt="search" />
           <input 
-          className='border-black border-b-[2px]'
-          type="text" 
-          onFocus={() => setOnFocus(true)}
-          onBlur={() => setOnFocus(false)}
-          value={dishName}
-          onChange={(event) => setDishName((prevValue) => event.target.value)}
-          placeholder={`${onFocus ? "Dish" : ""}`}
+            className='outline-none'
+            type="text" 
+            onFocus={() => setOnFocus(true)}
+            onBlur={() => setOnFocus(false)}
+            value={dishName}
+            onChange={(event) => setDishName((prevValue) => event.target.value)}
+            placeholder="Dish"
           />
-        
-        
-        <button type="submit" onClick={onClickhandlerSearch} className="text-text-gray">SEARCH</button>
+        <button type="submit" onClick={onClickhandlerSearch} className="">SEARCH</button>
       </form>
     </div>
   )

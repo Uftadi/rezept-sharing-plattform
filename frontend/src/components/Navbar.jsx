@@ -53,7 +53,7 @@ function Navbar() {
 			
 			<div className="py-[20px] border-border-gray border-b-[1px]">
 				{isLoading ? (
-					<ul className="flex gap-[10px] justify-center text-[14px] uppercase">
+					<ul className="flex gap-[24px] justify-center text-[14px] uppercase">
 						{categories.categories?.map((item, index) => (
 							index < 10 ? 
 							<li key={item.idCategory} className="hover:underline cursor-pointer flex items-center">
@@ -74,7 +74,7 @@ function Navbar() {
 				</div>
 				<div className="py-[20px] border-border-gray border-b-[1px]">
 				{isLoading ? (
-					<ul className="flex gap-[10px] justify-center text-[14px] uppercase">
+					<ul className="flex gap-[24px] justify-center text-[14px] uppercase">
 						{categories.categories?.map((item, index) => (
 							index >= 10 ? 
 							<li key={item.idCategory} className="hover:underline cursor-pointer flex items-center">
@@ -93,10 +93,6 @@ function Navbar() {
 					<p>Loading...</p>
 				)}
 			</div>
-			<div className="text-center">
-				<h2 className="text-[32px] font-medium my-[50px]">{category}</h2>
-			</div>
-			
 		</section>
 	);
 }
