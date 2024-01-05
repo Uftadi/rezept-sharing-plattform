@@ -54,7 +54,7 @@ function Navbar() {
 				<p>Loading...</p>
 			)}
 			<h2 className="text-3xl font-bold underline my-[15px]">{category}</h2>
-			<Link to="/">back to Main</Link>
+			
 		</div>
 	);
 }
