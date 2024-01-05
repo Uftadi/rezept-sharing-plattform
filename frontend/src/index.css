@@ -13,7 +13,42 @@ body {
   font-weight: 500;
 }
 
+.font-poppins-semi-bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.font-poppins-regular {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.font-pt {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-italianno {
+  font-family: 'Italianno', cursive;
+}
+
 img {
   width: 200px;
   height: 200px;
+}
+
+@layer utilities {
+  .max-container {
+    @apply mx-auto max-w-[1240px];
+  }
+  .max-container-nav {
+    @apply mx-auto max-w-[1095px];
+  }
+
+  .padding-container-nav {
+    @apply px-[120px] py-[20px];
+  }
 }
