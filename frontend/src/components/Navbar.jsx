@@ -32,7 +32,7 @@ function Navbar() {
 	}, []);
 
 	return (
-		<div className="mb-[30px]">
+		<div className="">
 			<div>
 				<Link to="/user">
 					{userFirstName}
@@ -40,7 +40,7 @@ function Navbar() {
 				</Link>
 			</div>
 			{isLoading ? (
-				<ul className="flex gap-[10px] justify-center">
+				<ul className="flex gap-[10px] justify-center py-3">
 					{categories.categories?.map((item) => (
 						<li key={item.idCategory} className="cursor-pointer">
 							<p onClick={() => setCategory(item.strCategory)}>
@@ -53,8 +53,6 @@ function Navbar() {
 			) : (
 				<p>Loading...</p>
 			)}
-			<h2 className="text-3xl font-bold underline my-[15px]">{category}</h2>
-			<Link to="/">back to Main</Link>
 		</div>
 	);
 }
