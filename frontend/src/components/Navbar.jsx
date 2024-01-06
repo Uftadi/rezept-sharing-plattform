@@ -35,7 +35,7 @@ function Navbar() {
 	return (
 
 		<section>
-			<div className="border-border-gray border-b-[1px]">
+			<nav className="border-border-gray border-b-[1px]">
 				<div className="flex justify-between items-center pb-[20px] max-container-nav padding-container">
 					<div className="flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
 						<p>Recipes</p>
@@ -50,7 +50,7 @@ function Navbar() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</nav>
 
 			
 			<div className="py-[20px] border-border-gray border-b-[1px]">
