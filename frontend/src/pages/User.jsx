@@ -10,6 +10,18 @@ import UserRecipes from "../components/UserRecipes";
 
 // const url = "http://localhost:3001";
 
+const ShareMenu = ({ onShareFacebook, onShareTwitter }) => {
+  return (
+    <div className="share-menu">
+      <p>Where would you like to share your recipes?</p>
+      <button onClick={onShareFacebook}>Facebook</button>
+      <br />
+
+      <button onClick={onShareTwitter}>Twitter</button>
+    </div>
+  );
+};
+
 const User = () => {
   const [nameInput, setNameInput] = useState("");
   const [produkten, setProdukten] = useState("");
@@ -18,7 +30,12 @@ const User = () => {
   const [difficulty, setDifficulty] = useState("");
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
   const [selectedUserId, setselectedUserId] = useState(null);
+
   const {users, setUsers, fetchUserData, url} = useContext(UserContext);
+
+  const [shareMenuVisible, setShareMenuVisible] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
 
   // const fetchData = async () => {
   //   try {
@@ -107,8 +124,33 @@ const User = () => {
     }
   };
 
-  const shareRecipe = (recipeItem) => {
-    console.log("Sharing recipe:", recipeItem);
+  const shareOnFacebook = () => {
+    try {
+      const recipeDetails = `Name: ${selectedRecipe.title}\nZutaten: ${selectedRecipe.ingredients}\nTime: ${selectedRecipe.time}\nDifficulty: ${selectedRecipe.difficulty}`;
+      const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        window.location.href
+      )}&quote=${encodeURIComponent(recipeDetails)}`;
+      window.open(shareUrl, "_blank");
+    } catch (error) {
+      console.error("Error sharing on Facebook:", error);
+    }
+  };
+
+  const shareOnTwitter = () => {
+    try {
+      const tweetText = `Name: ${selectedRecipe.title}\nIngredients: ${selectedRecipe.ingredients}\nTime: ${selectedRecipe.time}\nDifficulty: ${selectedRecipe.difficulty}`;
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        tweetText
+      )}`;
+      window.open(tweetUrl, "_blank");
+    } catch (error) {
+      console.error("Error sharing on Twitter:", error);
+    }
+  };
+
+  const toggleShareMenu = (recipe) => {
+    setShareMenuVisible(!shareMenuVisible);
+    setSelectedRecipe(recipe);
   };
 
   return (
@@ -121,33 +163,38 @@ const User = () => {
           type="text"
           placeholder="Food Name"
           value={nameInput}
+          name="title"
           onChange={(e) => setNameInput(e.target.value)}
           className="border-[2px] block"
         />
         <textarea
           placeholder="Food Zutaten"
           value={produkten}
+          name="ingredients"
           onChange={(e) => setProdukten(e.target.value)}
           rows="10"
           cols="20"
         />
         <input
           type="text"
-          value={steps}
-          onChange={(e) => setSteps(e.target.value)}
           placeholder="Steps"
+          value={steps}
+          name="steps"
+          onChange={(e) => setSteps(e.target.value)}
         />
         <input
-          type="text"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
+          type="number"
           placeholder="time"
+          value={time}
+          name="time"
+          onChange={(e) => setTime(e.target.value)}
         />
         <input
           type="text"
-          value={difficulty}
-          onChange={(e) => setDifficulty(e.target.value)}
           placeholder="Difficulty"
+          value={difficulty}
+          name="difficulty"
+          onChange={(e) => setDifficulty(e.target.value)}
         />
         {selectedRecipeId ? (
           <button onClick={saveOrder}>Update</button>
@@ -198,7 +245,7 @@ const User = () => {
                       <button onClick={() => deleteOrder(user._id, recipe._id)}>
                         <MdDelete />
                       </button>
-                      <button onClick={() => shareRecipe(recipe)}>
+                      <button onClick={() => toggleShareMenu(recipe)}>
                         <FaShareSquare />
                       </button>
                     </td>
@@ -207,6 +254,18 @@ const User = () => {
             )}
           </tbody>
         </table>
+        {shareMenuVisible && selectedRecipe && (
+          <ShareMenu
+            onShareFacebook={() => {
+              shareOnFacebook();
+              setShareMenuVisible(false);
+            }}
+            onShareTwitter={() => {
+              shareOnTwitter();
+              setShareMenuVisible(false);
+            }}
+          />
+        )}
         <Link to="/">back to Main</Link>
       </div>
     </>
@@ -214,4 +273,6 @@ const User = () => {
 };
 
 export default User;
+
+
 

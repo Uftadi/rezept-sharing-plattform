@@ -1,12 +1,14 @@
 import mongoose from 'mongoose';
 
 const recipeSchema = new mongoose.Schema({
+
   title: { type: String, required: false },
   ingredients: { type: String, required: false },
   steps: { type: String, required: false },
   time: { type: Number, required: false },
   difficulty: { type: String, required: false },
   image: {type: String, required: false}
+
 });
 
 const userSchema = new mongoose.Schema({
