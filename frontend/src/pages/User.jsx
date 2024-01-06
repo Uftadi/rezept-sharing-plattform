@@ -16,6 +16,7 @@ const User = () => {
   const [steps, setSteps] = useState("");
   const [time, setTime] = useState(0);
   const [difficulty, setDifficulty] = useState("");
+  const [image, setImage] = useState("");
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
   const [selectedUserId, setselectedUserId] = useState(null);
   const {users, setUsers, fetchUserData, url} = useContext(UserContext);
@@ -61,6 +62,7 @@ const User = () => {
         steps: steps,
         time: time,
         difficulty: difficulty,
+        image: image
       };
 
       if (selectedUserId && selectedRecipeId) {
@@ -116,7 +118,7 @@ const User = () => {
     <UpperNav />
     <UserProfile />
     <UserRecipes />
-      <div className="input_holder">
+      {/* <div className="input_holder">
         <input
           type="text"
           placeholder="Food Name"
@@ -149,12 +151,18 @@ const User = () => {
           onChange={(e) => setDifficulty(e.target.value)}
           placeholder="Difficulty"
         />
+        <input
+          type="text"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          placeholder="Image"
+        />
         {selectedRecipeId ? (
           <button onClick={saveOrder}>Update</button>
         ) : (
           <button onClick={saveOrder}>Add</button>
         )}
-      </div>
+      </div> */}
       <div className="list">
         <table>
           <thead>
@@ -188,6 +196,9 @@ const User = () => {
                     </td>
                     <td>
                       <p>{recipe.difficulty}</p>
+                    </td>
+                    <td>
+                      <img src={recipe.image}/>
                     </td>
                     <td>
                       <button

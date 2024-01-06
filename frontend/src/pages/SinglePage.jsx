@@ -45,9 +45,10 @@ function SinglePage() {
 
     let newRecipeItem = singleMeal.meals?.map(meal => (
       {
-        title:  meal?.strCategory,
+        title:  meal?.strMeal,
         ingredients: meal?.strIngredient1, 
-        steps: meal?.strInstructions
+        steps: meal?.strInstructions,
+        image: meal?.strMealThumb
         
       }
     ))
