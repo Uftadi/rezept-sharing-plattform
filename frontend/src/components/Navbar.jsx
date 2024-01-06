@@ -36,7 +36,7 @@ function Navbar() {
 
 		<section>
 			<div className="border-border-gray border-b-[1px]">
-				<div className="flex justify-between items-center pb-[20px] max-container-nav padding-container-nav">
+				<div className="flex justify-between items-center pb-[20px] max-container-nav padding-container">
 					<div className="flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
 						<p>Recipes</p>
 						<p>Tips & Tricks</p>

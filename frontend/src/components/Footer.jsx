@@ -5,7 +5,7 @@ import { socialLinks } from '../constants';
 function Footer() {
   return (
     <footer className='border-border-gray border-t-[1px]'>
-        <div className='padding-container flex justify-between max-w-[850px]'>
+        <div className='padding-container flex justify-between max-container-nav'>
             <div>
                 <h2 className='text-[36px] leading-[110%]'>GOO<br/>D<br/>FOO<br/>D</h2>
             </div>

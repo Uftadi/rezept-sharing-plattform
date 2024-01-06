@@ -27,12 +27,12 @@ function Main() {
 			<Navbar />
 			<SearchBar />
 			<div className="max-container padding-container flex items-start">
-				<div className="text-center basis-1/6">
+				<div className="text-center basis-1/4">
 					<h2 className="text-[32px] font-medium my-[50px]">{category}</h2>
 				</div>
-				<div className="flex flex-col basis-5/6">
+				<div className="flex flex-col basis-3/4">
 					{isLoading ? (
-						<ul className="flex flex-wrap items-start gap-[30px] justify-end">
+						<ul className="flex flex-wrap items-start gap-[30px] justify-center">
 							{recipes && recipes.length > 0 ? (
 								recipes.map((recipe) => (
 									<li key={recipe.idMeal} className="basis-1/3 max-w-[200px] recipe-transition hover:scale-[1.1] relative">
@@ -64,7 +64,6 @@ function Main() {
 			</div>
 		</div>
 	);
- (change)
 }
 
 export default Main;
