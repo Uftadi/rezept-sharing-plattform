@@ -11,6 +11,8 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
+import axios from "axios";
+
 
 function SinglePage() {
 	const navigate=useNavigate()
@@ -18,6 +20,9 @@ function SinglePage() {
   const [singleMeal, setSingleMeal] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isHeartActive, setIsActiveHeart] = useState(false);
+
+  const url = "http://localhost:3001";
+
   useEffect(() => {
     (async function fetchMealById() {
       const response = await fetch(
@@ -29,9 +34,27 @@ function SinglePage() {
       console.log(data);
     })();
   }, []);
-  {
+
+  
     console.log(singleMeal.meals);
+  
+
+  const onClickHandler = async () => {
+    setIsActiveHeart(!isHeartActive);
+
+    let newRecipeItem = singleMeal.meals?.map(meal => (
+      {
+        title:  meal?.strCategory,
+        ingredients: meal?.strIngredient1, 
+        steps: meal?.strInstructions
+        
+      }
+    ))
+    console.log(newRecipeItem[0])
+    await axios.post(url, newRecipeItem[0]);
   }
+
+
 
   return (
     <div className="absolute inset-0 bottom-0 bg-gray-300 min-h-screen">
@@ -44,7 +67,7 @@ function SinglePage() {
         <Navbar />
       </div>
       {isLoading
-        ? singleMeal.meals.map((item) => (
+        ? singleMeal.meals?.map((item) => (
             <div 
               key={item.idMeal}
               className="bg-white min-h-screen text-black p-10"
@@ -69,9 +92,9 @@ function SinglePage() {
                     src={item.strMealThumb}
                     alt="image"
                   />
-                  <div
+                  <button
                     className=" absolute text-black font-semibold left-3 top-3 cursor-pointer"
-                    onClick={() => setIsActiveHeart(!isHeartActive)}
+                    onClick={onClickHandler}
                   >
                     <img
                       className={`w-12 h-12 ${
@@ -85,7 +108,7 @@ function SinglePage() {
                       }`}
                       src="/images/heart-active.png"
                     />
-                  </div>
+                  </button>
                 </div>
                 <div className=" col-span-6 flex flex-col items-center">
                   <h2 className="text-3xl font-bold mb-4">{item.strMeal}</h2>
