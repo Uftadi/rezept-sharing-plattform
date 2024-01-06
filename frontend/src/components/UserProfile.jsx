@@ -9,7 +9,7 @@ function UserProfile() {
       }, []);
 
   return (
-    <section className="mt-[50px] mb-[20px] pl-[75px]">
+    <section className="mt-[50px] mb-[20px] max-container-nav padding-container flex flex-col items-center">
         <div>
             <div className='text-center mb-[50px]'>
                 <h1 className="text-[32px]">My profile</h1>

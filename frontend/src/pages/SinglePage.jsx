@@ -12,6 +12,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
 import axios from "axios";
+import SearchBar from "../components/SearchBar";
 
 
 function SinglePage() {
@@ -57,15 +58,10 @@ function SinglePage() {
 
 
   return (
-    <div className="absolute inset-0 bottom-0 bg-gray-300 min-h-screen">
-      <div className="bg-white border-b-2 ">
-        <h2 className="text-black font-semibold text-3xl py-1 shadow-lg">
-          Good Food
-        </h2>
-      </div>
-      <div className="text-black bg-white border-b-2 shadow-md" onClick={()=>navigate("/")}>
-        <Navbar />
-      </div>
+    <>
+    
+    <div >
+       <Navbar />
       {isLoading
         ? singleMeal.meals?.map((item) => (
             <div 
@@ -75,16 +71,7 @@ function SinglePage() {
               <h2 className=" font-bold text-4xl font-Caveat">
                 {item.strCategory}
               </h2>
-              <div className="w-full flex justify-center my-8">
-                <div className="border-b-2 border-b-black w-[300px] flex items-center justify-between py-2">
-                  <MdSearch className="w-7 h-7" />
-                  <input
-                    className="bg-transparent outline-none font-bold"
-                    placeholder="Dish"
-                  />
-                  <span className="text-lg font-bold uppercase">Search</span>
-                </div>
-              </div>
+              <SearchBar />
               <div className="grid grid-cols-1 lg:grid-cols-12 justify-items-center place-items-center">
                 <div className=" relative col-span-6 flex justify-center">
                   <img
@@ -178,7 +165,9 @@ function SinglePage() {
             </div>
           ))
         : "is loading"}
+                    
     </div>
+    </>
   );
 }
 

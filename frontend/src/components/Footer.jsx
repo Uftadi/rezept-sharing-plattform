@@ -19,7 +19,7 @@ function Footer() {
                     {socialLinks.map((link, index) => (
                         <li key={index}> 
                             <a href="#" className='flex gap-[18px]'>
-                                <img src={link.icon} alt="" />
+                                <img src={link.icon} alt="icon" />
                                 <span>{link.title}</span>
                             </a>
                         </li>
