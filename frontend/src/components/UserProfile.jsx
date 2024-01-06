@@ -16,18 +16,18 @@ function UserProfile() {
             </div>
             <div className="flex gap-[50px]">
                 <div className="">
-                    <img src={users[0].image} alt="profile photo" />
+                    <img src={users[0]?.image} alt="profile photo" />
                 </div>
                 <div className="flex flex-col">
-                    <h2 className="text-[38px] mb-[50px]">{users[0].firstName} {users[0].lastName}</h2>
+                    <h2 className="text-[38px] mb-[50px]">{users[0]?.firstName} {users[0]?.lastName}</h2>
                     <div className="flex flex-wrap gap-[50px] text-[14px]">
                         <div className="basis-[45%] border-b-[1px] border-black pb-[16px]">
                             <h3 className="uppercase ">E-mail</h3>
-                            <p className="text-gray64">{users[0].email}</p>
+                            <p className="text-gray64">{users[0]?.email}</p>
                         </div>
                         <div className="basis-[45%] border-b-[1px] border-black">
                             <h3 className="uppercase">recipes total</h3>
-                            <p className="text-gray64">{users[0].recipes.length} Recipes</p>
+                            <p className="text-gray64">{users[0]?.recipes.length} Recipes</p>
                         </div>
                         <div className="basis-[45%] border-b-[1px] border-black pb-[16px]">
                             <h3 className="uppercase">joined date</h3>
