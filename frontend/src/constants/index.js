@@ -16,3 +16,4 @@ export const socialLinks = [
         icon: "Pinterest.svg"
     }
 ]
+

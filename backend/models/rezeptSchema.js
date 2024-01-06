@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   firstName: { type: String, default: "Edie" },
   lastName: { type: String, default: "Flowers" },
   email: { type: String, default: "edieflowers@gmail.com" },
+  image: {type: String, default: "https://i.ibb.co/C83RmfV/Mask-group.jpg"},
   recipes: [recipeSchema]
 });
 
