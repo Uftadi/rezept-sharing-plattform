@@ -4,6 +4,8 @@ import Main from "../pages/Main";
 import NotFoundPage from "../pages/NotFoundPage";
 import SinglePage from "../pages/SinglePage";
 import User from "../pages/User";
+import UserRecipes from "../components/UserRecipes";
+import UserRecipe from "../pages/UserRecipe";
 
 export const router = createBrowserRouter([
 	{
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/user",
 				element: <User />,
+			},
+			{
+				path: "/user/recipe/:id",
+				element: <UserRecipe />,
 			},
 			{
 				path: "*",

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import UpperNav from "../components/UpperNav";
 import UserProfile from "../components/UserProfile";
 import { UserContext } from "../context/UserContext";
+import UserRecipes from "../components/UserRecipes";
 
 // const url = "http://localhost:3001";
 
@@ -114,7 +115,7 @@ const User = () => {
     <>
     <UpperNav />
     <UserProfile />
-      <h1 className="">Rezepte App</h1>
+    <UserRecipes />
       <div className="input_holder">
         <input
           type="text"

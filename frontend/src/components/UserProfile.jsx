@@ -14,7 +14,7 @@ function UserProfile() {
             <div className='text-center mb-[50px]'>
                 <h1 className="text-[32px]">My profile</h1>
             </div>
-            <div className="flex gap-[50px]">
+            <div className="flex gap-[50px] items-center">
                 <div className="">
                     <img src={users[0]?.image} alt="profile photo" />
                 </div>
