@@ -19,22 +19,28 @@ function UpperNav() {
 	}, []);
   return (
     <>
-        <div className="border-border-gray border-b-[1px]">
-            <div className="flex justify-between items-center pb-[20px] max-container-nav padding-container">
-                <div className="flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
-                    <p>Recipes</p>
-                    <p>Tips & Tricks</p>
-                </div>
-                <h1 className="text-[36px] font-poppins-semi-bold leading-[110%]">GOOD FOOD</h1>
-                <div className="flex items-center gap-[12px] uppercase text-[14px] font-poppins-regular text-text-gray">
-                    <img src={avatar} alt="avatar" className="w-[24px] h-[24px]" />
-                    <div className="border-l-[1px]">
-                        <Link className=" pl-[12px]" to="/user">{userFirstName} {userLastName}
-                        </Link>
-                    </div>
-                </div>
+      <div className="relative border-border-gray border-b-[1px]">
+        <div className=" flex justify-between items-center pb-[20px] max-container-nav padding-container">
+          <div className="flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
+            <p>Recipes</p>
+            <p>Tips & Tricks</p>
+          </div>
+
+          <div className="flex items-center gap-[12px] uppercase text-[14px] font-poppins-regular text-text-gray mt-3">
+            <img src={avatar} alt="avatar" className="w-[24px] h-[24px]" />
+            <div className="border-l-[1px]">
+              <Link className=" pl-[12px]" to="/user">
+                {userFirstName} {userLastName}
+              </Link>
             </div>
-		</div>
+          </div>
+        </div>
+        <div className="absolute inset-0 max-container-nav padding-container flex justify-center">
+          <h1 className="text-[36px] font-poppins-semi-bold leading-[110%] w-fit">
+            GOOD FOOD
+          </h1>
+        </div>
+      </div>
     </>
   )
 }

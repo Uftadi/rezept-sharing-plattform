@@ -11,18 +11,16 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
+import heart from "../assets/Heart.svg"
+import heartHover from "../assets/Heart-Hover.svg"
 import axios from "axios";
-
-
 function SinglePage() {
-	const navigate=useNavigate()
+  const navigate = useNavigate();
   const { mealId, setMealId } = useContext(RecipeContext);
   const [singleMeal, setSingleMeal] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isHeartActive, setIsActiveHeart] = useState(false);
-
   const url = "http://localhost:3001";
-
   useEffect(() => {
     (async function fetchMealById() {
       const response = await fetch(
@@ -34,45 +32,34 @@ function SinglePage() {
       console.log(data);
     })();
   }, []);
-
-  
-    console.log(singleMeal.meals);
-  
-
+  console.log(singleMeal.meals);
   const onClickHandler = async () => {
     setIsActiveHeart(!isHeartActive);
-
-    let newRecipeItem = singleMeal.meals?.map(meal => (
-      {
-        title:  meal?.strCategory,
-        ingredients: meal?.strIngredient1, 
-        steps: meal?.strInstructions
-        
-      }
-    ))
-    console.log(newRecipeItem[0])
+    let newRecipeItem = singleMeal.meals?.map((meal) => ({
+      title: meal?.strCategory,
+      ingredients: meal?.strIngredient1,
+      steps: meal?.strInstructions,
+    }));
+    console.log(newRecipeItem[0]);
     await axios.post(url, newRecipeItem[0]);
-  }
-
-
-
+  };
   return (
-    <div className="absolute inset-0 bottom-0 bg-gray-300 min-h-screen">
-      <div className="bg-white border-b-2 ">
-        <h2 className="text-black font-semibold text-3xl py-1 shadow-lg">
-          Good Food
-        </h2>
-      </div>
-      <div className="text-black bg-white border-b-2 shadow-md" onClick={()=>navigate("/")}>
+    <div className="absolute inset-0 bottom-0 bg-gray-300 min-h-screen container">
+
+      <div className="bg-white border-b-2 "></div>
+      <div
+        className="text-black bg-white border-b-2 shadow-md"
+        onClick={() => navigate("/")}
+      >
         <Navbar />
       </div>
       {isLoading
         ? singleMeal.meals?.map((item) => (
-            <div 
+            <div
               key={item.idMeal}
               className="bg-white min-h-screen text-black p-10"
             >
-              <h2 className=" font-bold text-4xl font-Caveat">
+              <h2 className=" text-black text-5xl font-Poppins text-center font-medium">
                 {item.strCategory}
               </h2>
               <div className="w-full flex justify-center my-8">
@@ -85,28 +72,28 @@ function SinglePage() {
                   <span className="text-lg font-bold uppercase">Search</span>
                 </div>
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-12 justify-items-center place-items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12  place-items-center">
                 <div className=" relative col-span-6 flex justify-center">
                   <img
-                    className=" w-[400px] h-[500px]"
+                    className="w-[400px] h-[500px] object-fill aspect-[3/4]"
                     src={item.strMealThumb}
                     alt="image"
                   />
                   <button
-                    className=" absolute text-black font-semibold left-3 top-3 cursor-pointer"
+                    className=" absolute text-black font-semibold right-3 top-3 cursor-pointer"
                     onClick={onClickHandler}
                   >
                     <img
                       className={`w-12 h-12 ${
                         isHeartActive ? "hidden" : "flex"
                       }`}
-                      src="/images/heart-notactive.png"
+                      src={heart}
                     />
                     <img
                       className={`w-12 h-12 ${
                         isHeartActive ? "flex" : "hidden"
                       }`}
-                      src="/images/heart-active.png"
+                      src={heartHover}
                     />
                   </button>
                 </div>
@@ -127,16 +114,31 @@ function SinglePage() {
                     <h4>Difficult</h4>
                   </div>
                   <div className="flex text-3xl mt-16 gap-4">
-                    <FaSquareXTwitter />
-                    <FaFacebookSquare />
-                    <FaInstagramSquare />
-                    <FaPinterest />
+                    <a href="https://twitter.com/">
+                      {" "}
+                      <FaSquareXTwitter />
+                    </a>
+
+                    <a href="https://facebook.com/">
+                      {" "}
+                      <FaFacebookSquare />
+                    </a>
+
+                    <a href="https://instagram.com/">
+                      {" "}
+                      <FaInstagramSquare />
+                    </a>
+
+                    <a href="https://pinterest.com/">
+                      {" "}
+                      <FaPinterest />
+                    </a>
                   </div>
                 </div>
               </div>
               <div className="grid grid-cols-12 mt-8">
-                <div className="col-span-6 flex justify-center">
-                  <ul className="w-[400px] text-start font-bold text-lg text-gray-600">
+                <div className="col-span-6 flex justify-start">
+                  <ul className=" text-start font-Poppins text-base text-gray-600 leading-[150%] ">
                     <li>{item.strIngredient1}</li>
                     <li>{item.strIngredient2}</li>
                     <li>{item.strIngredient3}</li>
@@ -160,26 +162,16 @@ function SinglePage() {
                   </ul>
                 </div>
                 <div className=" col-span-6 flex justify-center">
-                  <p className="w-[400px] text-start font-bold text-lg text-gray-600">
+                  <p className="w-[400px] text-start font-serif text-black text-base leading-[150%]">
                     {item.strInstructions}
                   </p>
                 </div>
               </div>
-              <div className="w-full flex justify-center my-8">
-                <button className="px-5 py-2 w-64 bg-red-700 rounded-lg text-white font-semibold">
-                  <Link
-                    className=" flex text-xl justify-center items-center"
-                    to="/"
-                  >
-                    back to Main
-                  </Link>
-                </button>
-              </div>
+              
             </div>
           ))
         : "is loading"}
     </div>
   );
 }
-
 export default SinglePage;
