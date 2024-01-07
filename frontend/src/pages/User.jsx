@@ -21,7 +21,7 @@ const ShareMenu = ({ onShareFacebook, onShareTwitter }) => {
 };
 
 const User = () => {
-  const {fetchUserData} = useContext(UserContext);
+  
   // useEffect(() => {
   //   fetchUserData();
   // }, []);
@@ -180,7 +180,6 @@ const User = () => {
     <UpperNav />
     <UserProfile />
     <UserRecipes />
-      <Link to="/">back to Main</Link>
     </>
   );
 };

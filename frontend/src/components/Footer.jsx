@@ -1,5 +1,6 @@
 import React from 'react';
 import { socialLinks } from '../constants';
+import { Link } from 'react-router-dom';
 
 
 function Footer() {
@@ -7,7 +8,7 @@ function Footer() {
     <footer className='border-border-gray border-t-[1px]'>
         <div className='padding-container flex justify-between max-container-nav'>
             <div>
-                <h2 className='text-[36px] leading-[110%]'>GOO<br/>D<br/>FOO<br/>D</h2>
+                <Link to="/" className='text-[36px] leading-[110%]' onClick={() => window.scrollTo({ top: 0 })}>GOO<br/>D<br/>FOO<br/>D</Link>
             </div>
             <div>
                 <h3 className='text-[14px] font-poppins-semi-bold tracking-[2px] mb-[15px]'>Info</h3>

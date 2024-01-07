@@ -1,11 +1,15 @@
 import React from 'react'
 import { useState, useContext, useEffect } from "react";
 import { RecipeContext } from "../context/RecipeContext";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 function CategoriesList() {
     const [categories, setCategories] = useState([]);  
     const { isLoading, setIsLoading, setCategory, category } = useContext(RecipeContext);
+    const navigate = useNavigate();
+    let location = useLocation();
+    const currentPath = location.pathname;
 
     useEffect(() => {
 		const fetchCategories = async () => {
@@ -16,6 +20,7 @@ function CategoriesList() {
 			console.log(data);
 			setCategories(data);
 			setIsLoading(true);
+               
 		};
 		fetchCategories();
 	}, []);

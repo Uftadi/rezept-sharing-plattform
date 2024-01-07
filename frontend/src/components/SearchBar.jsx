@@ -1,13 +1,12 @@
-import React from 'react'
-import { useContext, useState } from "react";
+import { React, useContext, useState } from "react";
 import { RecipeContext } from '../context/RecipeContext';
-import search from "../assets/Search.svg"
+import search from "../assets/Search.svg";
+import { useNavigate } from 'react-router-dom';
 
 
-
-function SearchBar() {
+function SearchBar () {
   const {dishName, setDishName, setIsLoading, setRecipes} = useContext(RecipeContext);
-  
+  const navigate = useNavigate();
   const [onFocus, setOnFocus] = useState(false);
 
   const fetchDish = async () => {
@@ -21,7 +20,7 @@ function SearchBar() {
     event.preventDefault();
     await fetchDish();
     setDishName("");
-    
+    navigate('/');
   };
 
   return (

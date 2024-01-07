@@ -22,10 +22,12 @@ function UpperNav() {
         <div className="border-border-gray border-b-[1px]">
             <div className="flex justify-between items-center pb-[20px] max-container-nav padding-container">
                 <div className="flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
-                    <p>Recipes</p>
+                    <Link to="/">Recipes</Link>
                     <p>Tips & Tricks</p>
                 </div>
-                <h1 className="text-[36px] font-poppins-semi-bold leading-[110%]">GOOD FOOD</h1>
+                <h1 className="text-[36px] font-poppins-semi-bold leading-[110%]">
+                    <Link to="/">GOOD FOOD</Link>
+                </h1>
                 <div className="flex items-center gap-[12px] uppercase text-[14px] font-poppins-regular text-text-gray">
                     <img src={avatar} alt="avatar" className="w-[24px] h-[24px]" />
                     <div className="border-l-[1px]">
