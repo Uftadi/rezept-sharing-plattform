@@ -25,7 +25,7 @@ function UserRecipes() {
 
 
   return (
-    <section className="max-container-nav padding-container">
+    <section className="max-container-nav padding-container mb-[50px]">
         <div className="mb-[25px]">
             <h2 className="uppercase text-[14px] font-poppins-regular">my recipes</h2>
         </div>
