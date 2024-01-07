@@ -60,28 +60,53 @@ export const createRecipe = async (req, res) => {
     }
   }
 
-export const  updateRecipe = async (req, res) => {
-    const userId = req.params.userId; // wie bei delete
+  export const updateRecipe = async (req, res) => {
+    const userId = req.params.userId;
     const recipeId = req.params.recipeId;
     const recipeUpdate = req.body;
     try {
-      await UserSchema.updateOne(
-        { 
-          _id: userId, 
-          'recipes._id': recipeId 
-        },
-        { 
-          $set: { 
-            'recipes.$': recipeUpdate  // recipes.$ findet das erste element im array, das die _id aus recipeId hat und ersetzt es mit recipeUpdate
-          } 
+      await UserSchema.findOneAndUpdate(
+        { _id: userId, 'recipes._id': recipeId },
+        {
+          $set: {
+            'recipes.$.title': recipeUpdate.title,
+            'recipes.$.ingredients': recipeUpdate.ingredients,
+            'recipes.$.steps': recipeUpdate.steps,
+            'recipes.$.time': recipeUpdate.time,
+            'recipes.$.difficulty': recipeUpdate.difficulty,
+          },
         }
       );
-      res.send("Recipe updated")
+      res.send("Recipe updated");
     } catch (error) {
       console.error("Error updating recipe:", error);
-      throw error; // Re-throw the error for the caller to handle
+      res.status(500).send("Internal Server Error");
     }
-  }
+  };
+  
+
+// export const  updateRecipe = async (req, res) => {
+//     const userId = req.params.userId; // wie bei delete
+//     const recipeId = req.params.recipeId;
+//     const recipeUpdate = req.body;
+//     try {
+//       await UserSchema.updateOne(
+//         { 
+//           _id: userId, 
+//           'recipes._id': recipeId 
+//         },
+//         { 
+//           $set: { 
+//             'recipes.$': recipeUpdate  // recipes.$ findet das erste element im array, das die _id aus recipeId hat und ersetzt es mit recipeUpdate
+//           } 
+//         }
+//       );
+//       res.send("Recipe updated")
+//     } catch (error) {
+//       console.error("Error updating recipe:", error);
+//       throw error; // Re-throw the error for the caller to handle
+//     }
+//   }
 
 
 

@@ -7,7 +7,7 @@ const RecipeContextProvider = ({ children }) => {
 	const [category, setCategory] = useState("Seafood");
 	const [isLoading, setIsLoading] = useState(false);
 	const [dishName, setDishName] = useState("");
-	const [mealId, setMealId] = useState("");
+	const [mealId, setMealId] = useState("52959");
 
 	useEffect(() => {
 		const fetchRecipes = async () => {
