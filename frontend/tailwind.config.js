@@ -11,6 +11,7 @@ export default {
           green: '#ECFF12',
           "text-gray": '#8E9194',
           gray64: "#646464",
+          pinkF5: "#F8F5F5"
 
       },
       fontFamily: {
