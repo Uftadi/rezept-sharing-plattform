@@ -7,7 +7,9 @@ function UpperNav() {
 	const [userLastName, setUserLastName] = useState("");
 	useEffect(() => {
 		const fetchUserName = async () => {
-			const response = await fetch("http://localhost:3001/");
+			const response = await fetch(
+				"https://rezept-share-plattform.onrender.com"
+			);
 			const data = await response.json();
 			console.log(data[0]);
 			setUserFirstName(data[0].firstName);

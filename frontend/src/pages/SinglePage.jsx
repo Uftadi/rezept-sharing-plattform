@@ -20,7 +20,7 @@ function SinglePage() {
 	const [singleMeal, setSingleMeal] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isHeartActive, setIsActiveHeart] = useState(false);
-	const url = "http://localhost:3001";
+	const url = "https://rezept-share-plattform.onrender.com";
 	useEffect(() => {
 		(async function fetchMealById() {
 			const response = await fetch(
