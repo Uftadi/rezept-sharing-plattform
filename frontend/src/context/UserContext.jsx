@@ -17,6 +17,9 @@ const UserContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isEditingRecipe, setIsEditingRecipe] = useState(false);
     const [isAddingRecipe, setIsAddingRecipe] = useState(false);
+    const [isRecipeUpdated, setIsRecipeUpdated] = useState(false);
+    const [shareMenuVisible, setShareMenuVisible] = useState(false);
+    const [selectedRecipe, setSelectedRecipe] = useState(null);
 
     const url = "http://localhost:3001";
 
@@ -44,8 +47,10 @@ const UserContextProvider = ({ children }) => {
             setSteps(selectedRecipe.steps);
             setTime(selectedRecipe.time);
             setDifficulty(selectedRecipe.difficulty);
+            setImage(selectedRecipe.image)
             setSelectedRecipeId(recipeItemId);
             setselectedUserId(orderId);
+            setIsEditingRecipe(true);
           }
         }
       };
@@ -90,9 +95,11 @@ const UserContextProvider = ({ children }) => {
           setSteps("");
           setTime(0);
           setDifficulty("");
+          setImage("");
           setSelectedRecipeId(null);
           setselectedUserId(null);
           setIsAddingRecipe(false);
+          setIsEditingRecipe(false);
         } catch (error) {
           console.error("Fehler beim Speichern der Bestellung:", error.message);
         }
@@ -107,6 +114,46 @@ const UserContextProvider = ({ children }) => {
         }
       };
 
+      const shareOnFacebook = () => {
+        try {
+          const recipeDetails = `Name: ${selectedRecipe.title}\nZutaten: ${selectedRecipe.ingredients}\nTime: ${selectedRecipe.time}\nDifficulty: ${selectedRecipe.difficulty}`;
+          const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+            window.location.href
+          )}&quote=${encodeURIComponent(recipeDetails)}`;
+          window.open(shareUrl, "_blank");
+        } catch (error) {
+          console.error("Error sharing on Facebook:", error);
+        }
+      };
+    
+      const shareOnTwitter = () => {
+        try {
+          const tweetText = `Name: ${selectedRecipe.title}\nIngredients: ${selectedRecipe.ingredients}\nTime: ${selectedRecipe.time}\nDifficulty: ${selectedRecipe.difficulty}`;
+          const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+            tweetText
+          )}`;
+          window.open(tweetUrl, "_blank");
+        } catch (error) {
+          console.error("Error sharing on Twitter:", error);
+        }
+      };
+
+      const toggleShareMenu = (recipe) => {
+        setShareMenuVisible(!shareMenuVisible);
+        setSelectedRecipe(recipe);
+      };
+
+      const ShareMenu = ({ onShareFacebook, onShareTwitter }) => {
+        return (
+          <div className="share-menu">
+            <p>Where would you like to share your recipes?</p>
+            <button onClick={onShareFacebook}>Facebook</button>
+            <br />
+      
+            <button onClick={onShareTwitter}>Twitter</button>
+          </div>
+        );
+      };
       
 
 
@@ -130,10 +177,13 @@ const UserContextProvider = ({ children }) => {
                 difficulty, setDifficulty,
                 selectedRecipeId, setSelectedRecipeId,
                 selectedUserId, setselectedUserId,
-                image, setImage
-
-
-
+                image, setImage,
+                isRecipeUpdated, setIsRecipeUpdated,
+                toggleShareMenu,
+                shareOnFacebook, shareOnTwitter,
+                shareMenuVisible, setShareMenuVisible,
+                selectedRecipe, setSelectedRecipe,
+                ShareMenu
 
 
 			}}

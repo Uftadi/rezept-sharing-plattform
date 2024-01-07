@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { MdEdit, MdDelete } from "react-icons/md";
-import { FaShareSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import UpperNav from "../components/UpperNav";
 import UserProfile from "../components/UserProfile";
 import { UserContext } from "../context/UserContext";
 import UserRecipes from "../components/UserRecipes";
+
 
  const url = "http://localhost:3001";
 
@@ -23,14 +21,11 @@ const ShareMenu = ({ onShareFacebook, onShareTwitter }) => {
 };
 
 const User = () => {
-  const [nameInput, setNameInput] = useState("");
-  const [produkten, setProdukten] = useState("");
-  const [steps, setSteps] = useState("");
-  const [time, setTime] = useState(0);
-  const [difficulty, setDifficulty] = useState("");
-  const [image, setImage] = useState("");
-  const [selectedRecipeId, setSelectedRecipeId] = useState(null);
-  const [selectedUserId, setselectedUserId] = useState(null);
+  const {fetchUserData} = useContext(UserContext);
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, []);
+
 
   const {users, setUsers, fetchUserData, url} = useContext(UserContext);
 
@@ -179,130 +174,13 @@ const User = () => {
     setSelectedRecipe(recipe);
   };
 
+
   return (
     <>
     <UpperNav />
     <UserProfile />
     <UserRecipes />
-      {/* <div className="input_holder">
-        <input
-          type="text"
-          placeholder="Food Name"
-          value={nameInput}
-          name="title"
-          onChange={(e) => setNameInput(e.target.value)}
-          className="border-[2px] block"
-        />
-        <textarea
-          placeholder="Food Zutaten"
-          value={produkten}
-          name="ingredients"
-          onChange={(e) => setProdukten(e.target.value)}
-          rows="10"
-          cols="20"
-        />
-        <input
-          type="text"
-          placeholder="Steps"
-          value={steps}
-          name="steps"
-          onChange={(e) => setSteps(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="time"
-          value={time}
-          name="time"
-          onChange={(e) => setTime(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Difficulty"
-          value={difficulty}
-          name="difficulty"
-          onChange={(e) => setDifficulty(e.target.value)}
-        />
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          placeholder="Image"
-        />
-        {selectedRecipeId ? (
-          <button onClick={saveOrder}>Update</button>
-        ) : (
-          <button onClick={saveOrder}>Add</button>
-        )}
-      </div> */}
-      <div className="list">
-        <table>
-          <thead>
-            <tr>
-              <th>Food Title</th>
-              <th>Food Zutaten</th>
-              <th>Steps</th>
-              <th>Time</th>
-              <th>Difficulty</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map(
-              (user) =>
-                user.recipes &&
-                user.recipes[0] &&
-                user.recipes.map((recipe, index) => (
-                  <tr key={user._id + index}>
-                    <td>
-                      <p>{recipe.title}</p>
-                    </td>
-                    <td>
-                      <p>{recipe.ingredients}</p>
-                    </td>
-                    <td>
-                      <p>{recipe.steps}</p>
-                    </td>
-                    <td>
-                      <p>{recipe.time}</p>
-                    </td>
-                    <td>
-                      <p>{recipe.difficulty}</p>
-                    </td>
-                    <td>
-                      <img src={recipe.image}/>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => updateRecipe(user._id, recipe._id)}
-                      >
-                        <MdEdit />
-                      </button>
-                      <button onClick={() => deleteOrder(user._id, recipe._id)}>
-                        <MdDelete />
-                      </button>
-                      <button onClick={() => toggleShareMenu(recipe)}>
-                        <FaShareSquare />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-            )}
-          </tbody>
-        </table>
-        {shareMenuVisible && selectedRecipe && (
-          <ShareMenu
-            onShareFacebook={() => {
-              shareOnFacebook();
-              setShareMenuVisible(false);
-            }}
-            onShareTwitter={() => {
-              shareOnTwitter();
-              setShareMenuVisible(false);
-            }}
-          />
-        )}
-        <Link to="/">back to Main</Link>
-      </div>
+      <Link to="/">back to Main</Link>
     </>
   );
 };

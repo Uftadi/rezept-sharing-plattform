@@ -2,14 +2,26 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import star from "../assets/Star-border.svg"
 import AddRecipeForm from "./AddRecipeForm";
+import Button from "./Button";
 
 function UserRecipes() {
-    const {users, setUsers, fetchUserData, url, isLoading, isEditingRecipe, setIsEditingRecipe,
-        isAddingRecipe, setIsAddingRecipe} = useContext(UserContext);
+    const [hoveredItemId, setHoveredItemId] = useState(null);
+
+    const {users, setUsers, fetchUserData, isLoading, setIsAddingRecipe, updateRecipe, deleteOrder,
+        toggleShareMenu, shareOnFacebook, shareOnTwitter, shareMenuVisible, setShareMenuVisible,
+        selectedRecipe, setSelectedRecipe, ShareMenu} = useContext(UserContext);
 
     useEffect(() => {
         fetchUserData();
       }, []);
+
+      const handleHover = (itemId) => {
+        setHoveredItemId(itemId);
+      };
+      
+      const handleMouseLeave = () => {
+        setHoveredItemId(null);
+      };
 
 
   return (
@@ -19,9 +31,22 @@ function UserRecipes() {
         </div>
         <ul className="flex gap-[30px] flex-wrap">
         {isLoading ? (
-            users[0].recipes?.map(recipe => (
-            <li key={recipe?._id} className="max-w-[276px] recipe-transition hover:scale-[1.1]">
-                <div className="relative">
+            users?.map(user => 
+                user.recipes?.map((recipe) => (
+                    <li key={recipe?._id} 
+                    className="max-w-[276px] recipe-transition hover:scale-[1.1] relative"
+                    onMouseEnter={() => handleHover(recipe?._id)} 
+                    onMouseLeave={handleMouseLeave}
+                    >
+                    <div className={`${hoveredItemId === recipe._id ? "flex" : "hidden"}  recipe-transition  flex absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-20 flex-col gap-[16px]`}>
+                        <Button title="edit" bg="white" onClickFunction={() => updateRecipe(user._id, recipe._id)} />
+                        <Button title="delete" bg="white" onClickFunction={() => deleteOrder(user._id, recipe._id)} />
+                        {/* <Button title="share" bg="white" onClickFunction={() => toggleShareMenu(recipe)} /> */}
+                    </div>
+                    {/* {shareMenuVisible && selectedRecipe && (
+                    <ShareMenu/>
+                     )} */}
+                    <div>
                     <img src={recipe.image} alt={recipe.title} className=""/>
                 </div>
                 <div className="flex justify-between items-start text-[12px] leading-[100%] mt-[10px]">
@@ -32,7 +57,8 @@ function UserRecipes() {
                     </div>	
                 </div>
             </li>
-            ))
+                )) 
+            )
         ) : (
             <p>Loading...</p>
         )}
@@ -41,10 +67,6 @@ function UserRecipes() {
             </li>
         </ul>
         <AddRecipeForm />
-
-
-            
-        
     </section>
   )
 }
