@@ -3,7 +3,6 @@ import { useContext, useEffect } from "react";
 import { RecipeContext } from "../context/RecipeContext";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { MdSearch } from "react-icons/md";
 import { GoClock } from "react-icons/go";
 import { IoIosStarHalf } from "react-icons/io";
 import { MdRoomService } from "react-icons/md";
@@ -33,15 +32,18 @@ function SinglePage() {
 			console.log(data);
 		})();
 	}, []);
+
 	console.log(singleMeal.meals);
+
 	const onClickHandler = async () => {
 		setIsActiveHeart(!isHeartActive);
 		let newRecipeItem = singleMeal.meals?.map((meal) => ({
-			title: meal?.strCategory,
+			title: meal?.strMeal,
 			ingredients: meal?.strIngredient1,
 			steps: meal?.strInstructions,
+			image: meal?.strMealThumb,
 		}));
-		console.log(newRecipeItem[0]);
+		console.log("meal" + newRecipeItem[0]);
 		await axios.post(url, newRecipeItem[0]);
 	};
 	return (
