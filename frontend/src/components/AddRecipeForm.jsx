@@ -2,31 +2,18 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 
 function AddRecipeForm() {
-    const {users, 
-        setUsers,
-        fetchUserData,
-        url,
-        updateRecipe,
+    const {
         saveOrder,
-        deleteOrder,
-        isLoading, setIsLoading,
-        isEditingRecipe, setIsEditingRecipe,
         isAddingRecipe, setIsAddingRecipe,
         nameInput, setNameInput,
         produkten, setProdukten,
         steps, setSteps,
         time, setTime,
         difficulty, setDifficulty,
-        selectedRecipeId, setSelectedRecipeId,
-        selectedUserId, setselectedUserId, image, setImage} = useContext(UserContext);
-
-        const closeButtonHandler = (e) => {
-            e.preventDefault();
-            
-        }
+        selectedRecipeId, image, setImage, isEditingRecipe, setIsEditingRecipe} = useContext(UserContext);
 
     return (
-        <section className={`${isAddingRecipe ? "block " : "hidden"} mt-[50px] mb-[20px]`}>
+        <section className={`${isAddingRecipe || isEditingRecipe ? "block " : "hidden"} mt-[50px] mb-[20px]`}>
             <h4 className='text-[32px] text-center'>My new recipe</h4>
             <form action="" className={`flex flex-col items-center justify-center gap-[10px] mt-[50px]` }>
                 <div className='py-[16px] bg-pinkF5 pl-[10px]'>
@@ -35,7 +22,6 @@ function AddRecipeForm() {
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                     placeholder="Photo*"
-                    required
                     className='lg:min-w-[580px] md:min-w-[400px] min-w-[250px] bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                     />
                 </div>
@@ -45,7 +31,7 @@ function AddRecipeForm() {
                         placeholder="title*"
                         value={nameInput}
                         onChange={(e) => setNameInput(e.target.value)}
-                        required
+                        
                         className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                         />
                 </div>
@@ -56,7 +42,7 @@ function AddRecipeForm() {
                     onChange={(e) => setProdukten(e.target.value)}
                     rows="10"
                     cols="20"
-                    required
+                    
                     className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase resize-none'
                     />
                 </div>
@@ -68,7 +54,7 @@ function AddRecipeForm() {
                         placeholder="Steps*"
                         rows="10"
                         cols="20"
-                        required
+                        
                         className='lg:min-w-[580px] md:min-w-[400px] min-w-[250px] resize-none bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                         />
                 </div>
@@ -79,7 +65,7 @@ function AddRecipeForm() {
                         value={time}
                         onChange={(e) => setTime(e.target.value)}
                         placeholder="time"
-                        required
+                        
                         className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                         />
                 </div>
@@ -89,7 +75,7 @@ function AddRecipeForm() {
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
                     className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder-black text-[14px] tracking-[1px] uppercase'
-                    required
+                    
                     >
                     <option value="">Difficulty</option>
                     <option value="easy">easy</option>
@@ -100,7 +86,7 @@ function AddRecipeForm() {
                 </div>
                 <div className='flex flex-center gap-[20px]'>
                     <button className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] hover:bg-black hover:text-white' onClick={saveOrder}>{selectedRecipeId ? "update" : "add"} my recipe</button>
-                    <button type='submit' className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] transition-all hover:bg-black hover:text-white' onClick={() => setIsAddingRecipe(false)}>close</button>
+                    <button type='submit' className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] transition-all hover:bg-black hover:text-white' onClick={() => { setIsAddingRecipe(false); setIsEditingRecipe(false);}}>cancel</button>
                 </div>
             </form>
         </section>
