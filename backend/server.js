@@ -4,6 +4,7 @@ import 'dotenv/config'
 import { connectMongoose } from "./util/connectMongoose.js"
 
 import rezeptRouter from "./router/rezeptRouter.js"
+import commentRouter from "./router/commentRouter.js"
 
 const PORT = process.env.PORT
 
@@ -16,6 +17,7 @@ app.use(cors({
   }));
 
 app.use("/", rezeptRouter)
+app.use("/", commentRouter)
 
 await connectMongoose()
 
