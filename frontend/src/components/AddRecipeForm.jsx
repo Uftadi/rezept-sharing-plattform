@@ -20,31 +20,36 @@ function AddRecipeForm() {
         selectedRecipeId, setSelectedRecipeId,
         selectedUserId, setselectedUserId, image, setImage} = useContext(UserContext);
 
+        const closeButtonHandler = (e) => {
+            e.preventDefault();
+            
+        }
+
     return (
         <section className={`${isAddingRecipe ? "block " : "hidden"} mt-[50px] mb-[20px]`}>
             <h4 className='text-[32px] text-center'>My new recipe</h4>
             <form action="" className={`flex flex-col items-center justify-center gap-[10px] mt-[50px]` }>
-                <div className='py-[16px] bg-pinkF5 pl-[10px] min-w-[580px]'>
+                <div className='py-[16px] bg-pinkF5 pl-[10px]'>
                     <input
                     type="text"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                     placeholder="Photo*"
                     required
-                    className='min-w-[580px] bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
+                    className='lg:min-w-[580px] md:min-w-[400px] min-w-[250px] bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                     />
                 </div>
-                <div className='py-[16px] bg-pinkF5 pl-[10px] min-w-[580px]'>
+                <div className='py-[16px] bg-pinkF5 pl-[10px]'>
                     <input
                         type="text"
                         placeholder="title*"
                         value={nameInput}
                         onChange={(e) => setNameInput(e.target.value)}
                         required
-                        className='bg-pinkF5 min-w-[580px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
+                        className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                         />
                 </div>
-                <div className='py-[16px] bg-pinkF5 pl-[10px] min-w-[580px]'>
+                <div className='py-[16px] bg-pinkF5 pl-[10px]'>
                     <textarea
                     placeholder="ingredients*"
                     value={produkten}
@@ -52,10 +57,10 @@ function AddRecipeForm() {
                     rows="10"
                     cols="20"
                     required
-                    className='bg-pinkF5 min-w-[580px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase resize-none'
+                    className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase resize-none'
                     />
                 </div>
-                <div className='py-[16px] bg-pinkF5 pl-[10px] min-w-[580px]'>
+                <div className='py-[16px] bg-pinkF5 pl-[10px] '>
                     <textarea
                         type="text"
                         value={steps}
@@ -64,10 +69,10 @@ function AddRecipeForm() {
                         rows="10"
                         cols="20"
                         required
-                        className='min-w-[580px] resize-none bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
+                        className='lg:min-w-[580px] md:min-w-[400px] min-w-[250px] resize-none bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                         />
                 </div>
-                <div className='py-[16px] bg-pinkF5 pl-[10px] min-w-[580px]'>
+                <div className='py-[16px] bg-pinkF5 pl-[10px]'>
                     <input
                         type="number"
                         min="0"
@@ -75,23 +80,15 @@ function AddRecipeForm() {
                         onChange={(e) => setTime(e.target.value)}
                         placeholder="time"
                         required
-                        className='bg-pinkF5 text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
+                        className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder:text-black text-[14px] tracking-[1px] uppercase'
                         />
                 </div>
-                {/* <div>
-                    <input
-                        type="select"
-                        value={difficulty}
-                        onChange={(e) => setDifficulty(e.target.value)}
-                        placeholder="Difficulty"
-                    />
-                </div> */}
-                <div className='py-[16px] bg-pinkF5 pl-[10px] min-w-[580px] mb-[40px]'>
+                <div className='py-[16px] bg-pinkF5 pl-[10px] mb-[40px]'>
                 <select
                     placeholder="Difficulty"
                     value={difficulty}
                     onChange={(e) => setDifficulty(e.target.value)}
-                    className='bg-pinkF5 text-black outline-none placeholder-black text-[14px] tracking-[1px] uppercase'
+                    className='bg-pinkF5 lg:min-w-[580px] md:min-w-[400px] min-w-[250px] text-black outline-none placeholder-black text-[14px] tracking-[1px] uppercase'
                     required
                     >
                     <option value="">Difficulty</option>
@@ -101,7 +98,10 @@ function AddRecipeForm() {
                     
                 </select>
                 </div>
-                <button className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px]' onClick={saveOrder}>{selectedRecipeId ? "update" : "add"} my recipe</button>
+                <div className='flex flex-center gap-[20px]'>
+                    <button className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] hover:bg-black hover:text-white' onClick={saveOrder}>{selectedRecipeId ? "update" : "add"} my recipe</button>
+                    <button type='submit' className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] transition-all hover:bg-black hover:text-white' onClick={() => setIsAddingRecipe(false)}>close</button>
+                </div>
             </form>
         </section>
     )

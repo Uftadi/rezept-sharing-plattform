@@ -40,7 +40,6 @@ function UserRecipes() {
                 <button onClick={() => setIsAddingRecipe(true)} className="uppercase text-[14px] font-poppins-semi-bold border-[1px] border-black px-[40px] py-[10px]">add new recipe</button>
             </li>
         </ul>
-
         <AddRecipeForm />
 
 
