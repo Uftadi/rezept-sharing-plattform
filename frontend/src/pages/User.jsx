@@ -8,7 +8,7 @@ import UserProfile from "../components/UserProfile";
 import { UserContext } from "../context/UserContext";
 import UserRecipes from "../components/UserRecipes";
 
-// const url = "http://localhost:3001";
+ const url = "http://localhost:3001";
 
 const ShareMenu = ({ onShareFacebook, onShareTwitter }) => {
   return (
@@ -81,6 +81,29 @@ const User = () => {
         difficulty: difficulty,
         image: image
       };
+      const missingFields = [];
+
+    if (nameInput === "") {
+      missingFields.push("Titel");
+    }
+    if (produkten === "") {
+      missingFields.push("Zutaten");
+    }
+    if (steps === "") {
+      missingFields.push("Schritte");
+    }
+    if (time === "") {
+      missingFields.push("Zeit");
+    }
+    if (difficulty === "") {
+      missingFields.push("Schwierigkeitsgrad");
+    }
+
+    if (missingFields.length > 0) {
+      const missingFieldsString = missingFields.join(', ');
+      alert(`Folgende Felder müssen ausgefüllt werden: ${missingFieldsString}`);
+      return;
+    }
 
       if (selectedUserId && selectedRecipeId) {
         const selectedUser = users.find((user) => user._id === selectedUserId);
@@ -128,15 +151,16 @@ const User = () => {
 
   const shareOnFacebook = () => {
     try {
-      const recipeDetails = `Name: ${selectedRecipe.title}\nZutaten: ${selectedRecipe.ingredients}\nTime: ${selectedRecipe.time}\nDifficulty: ${selectedRecipe.difficulty}`;
-      const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        window.location.href
-      )}&quote=${encodeURIComponent(recipeDetails)}`;
-      window.open(shareUrl, "_blank");
+        const recipeDetails = `Name: ${selectedRecipe.title}\nZutaten: ${selectedRecipe.ingredients}\nTime: ${selectedRecipe.time}\nDifficulty: ${selectedRecipe.difficulty}`;
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(recipeDetails)}`;
+        window.open(shareUrl, "_blank");
     } catch (error) {
-      console.error("Error sharing on Facebook:", error);
+        console.error("Error sharing on Facebook:", error);
     }
-  };
+};
+
+
+
 
   const shareOnTwitter = () => {
     try {
