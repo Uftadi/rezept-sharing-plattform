@@ -26,16 +26,16 @@ function Main() {
 		<div>
 			<Navbar />
 			<SearchBar />
-			<div className="max-container padding-container flex items-start">
-				<div className="text-center basis-1/4">
+			<div className="max-container px-[20px] py-[20px] flex-col md:flex-row md:padding-container flex items-start">
+				<div className="text-center md:basis-1/4">
 					<h2 className="text-[32px] font-medium my-[50px]">{category}</h2>
 				</div>
-				<div className="flex flex-col basis-3/4">
+				<div className="flex flex-col md:basis-3/4">
 					{isLoading ? (
-						<ul className="flex flex-wrap items-start gap-[30px] justify-center">
+						<ul className="flex flex-wrap items-start gap-[10px] md:gap-[30px] justify-between md:justify-center">
 							{recipes && recipes.length > 0 ? (
 								recipes.map((recipe) => (
-									<li key={recipe.idMeal} className="basis-1/3 max-w-[200px] recipe-transition hover:scale-[1.1] relative">
+									<li key={recipe.idMeal} className="basis-[48%] md:basis-1/3 max-w-[200px] recipe-transition hover:scale-[1.1] relative">
 										<button onClick={() => onClickHandler(recipe.idMeal)} className="absolute top-[10px] right-[10px] z-10 ">
 											<img src={heartClickedIds.includes(recipe.idMeal) ? whiteHeart : heart} alt="heart" />
 										</button>

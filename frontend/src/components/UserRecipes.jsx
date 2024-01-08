@@ -25,20 +25,20 @@ function UserRecipes() {
 
 
   return (
-    <section className="max-container-nav padding-container mb-[50px]">
+    <section className="max-container-nav p-[20px] md:padding-container mb-[20px] md:mb-[50px]">
         <div className="mb-[25px]">
             <h2 className="uppercase text-[14px] font-poppins-regular">my recipes</h2>
         </div>
-        <ul className="flex gap-[30px] flex-wrap">
+        <ul className="flex gap-[20px] md:gap-[30px] flex-wrap">
         {isLoading ? (
             users?.map(user => 
                 user.recipes?.map((recipe) => (
                     <li key={recipe?._id} 
-                    className="max-w-[276px] recipe-transition hover:scale-[1.1] relative"
+                    className="basis-[48%] md:basis-1/4 max-w-[276px] recipe-transition hover:scale-[1.1] relative"
                     onMouseEnter={() => handleHover(recipe?._id)} 
                     onMouseLeave={handleMouseLeave}
                     >
-                    <div className={`${hoveredItemId === recipe._id ? "flex" : "hidden"}  recipe-transition  flex absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-20 flex-col gap-[16px]`}>
+                    <div className={`${hoveredItemId === recipe._id ? "flex" : "hidden"}  recipe-transition  flex absolute top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] z-20 flex-col gap-[8px] md:gap-[16px]`}>
                         <Button title="edit" bg="white" onClickFunction={() => updateRecipe(user._id, recipe._id)} />
                         <Button title="delete" bg="white" onClickFunction={() => deleteOrder(user._id, recipe._id)} />
                         {/* <Button title="share" bg="white" onClickFunction={() => toggleShareMenu(recipe)} /> */}
@@ -62,8 +62,8 @@ function UserRecipes() {
         ) : (
             <p>Loading...</p>
         )}
-            <li className="bg-pinkF5 w-[276px] h-[276px] flex items-center justify-center recipe-transition hover:scale-[1.1]">
-                <button onClick={() => setIsAddingRecipe(true)} className="uppercase text-[14px] font-poppins-semi-bold border-[1px] border-black px-[40px] py-[10px]">add new recipe</button>
+            <li className="bg-pinkF5 max-w-[276px] aspect-square   basis-[48%] md:basis-1/4 flex items-center justify-center recipe-transition hover:scale-[1.1]">
+                <button onClick={() => setIsAddingRecipe(true)} className="uppercase text-[14px] font-poppins-semi-bold border-[1px] border-black px-[10px] md:px-[40px] py-[10px]">add new recipe</button>
             </li>
         </ul>
         <AddRecipeForm />

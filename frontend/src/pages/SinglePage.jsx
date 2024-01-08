@@ -60,10 +60,11 @@ function SinglePage() {
 									{item.strCategory}
 								</h2>
 								<SearchBar />
-								<div className="grid grid-cols-1 lg:grid-cols-12  place-items-center">
-									<div className=" relative col-span-6 flex justify-center">
+                <div className="max-container padding-container">
+								<div className="grid grid-cols-1 gap-[20px] lg:grid-cols-12 place-items-center">
+									<div className="relative col-span-6 flex justify-center">
 										<img
-											className="w-[400px] h-[500px] object-fill aspect-[3/4]"
+											className="max-w-[400px] object-cover aspect-[3/4]"
 											src={item.strMealThumb}
 											alt="image"
 										/>
@@ -86,7 +87,7 @@ function SinglePage() {
 										</button>
 									</div>
 									<div className=" col-span-6 flex flex-col items-center">
-										<h2 className="text-3xl font-bold mb-4">{item.strMeal}</h2>
+										<h2 className="text-3xl font-bold mb-4 my-[20px]">{item.strMeal}</h2>
 										<div className="w-[300px] flex justify-between border-b-2 border-black py-2">
 											<div className=" flex items-center gap-2 font-bold">
 												<GoClock className="w-6 h-6" />
@@ -121,7 +122,7 @@ function SinglePage() {
 										</div>
 									</div>
 								</div>
-								<div className="grid grid-cols-12 mt-8">
+								<div className="grid grid-cols-12 mt-8 lg:padding-container">
 									<div className="col-span-6 flex justify-start">
 										<ul className=" text-start font-Poppins text-base text-gray-600 leading-[150%] ">
 											<li>{item.strIngredient1}</li>
@@ -153,6 +154,7 @@ function SinglePage() {
 									</div>
 								</div>
 							</div>
+              </div>
 					  ))
 					: "is loading"}
 			</div>

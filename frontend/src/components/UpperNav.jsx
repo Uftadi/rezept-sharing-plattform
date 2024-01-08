@@ -20,12 +20,12 @@ function UpperNav() {
 	return (
 		<>
 			<div className="border-border-gray border-b-[1px]">
-				<div className="flex justify-between items-center pb-[20px] max-container-nav padding-container">
-					<div className="flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
+				<div className="flex justify-between items-center pb-[20px] max-container-nav px-[20px] py-[20px] md:padding-container">
+					<div className="hidden md:flex gap-[24px] uppercase text-[14px] font-poppins-regular text-text-gray ">
 						<Link to="/">Recipes</Link>
 						<p>Tips & Tricks</p>
 					</div>
-					<h1 className="text-[36px] font-poppins-semi-bold leading-[110%]">
+					<h1 className="text-[26px] md:text-[36px] font-poppins-semi-bold leading-[110%]">
 						<Link to="/">GOOD FOOD</Link>
 					</h1>
 					<div className="flex items-center gap-[12px] uppercase text-[14px] font-poppins-regular text-text-gray">

@@ -84,9 +84,9 @@ function AddRecipeForm() {
                     
                 </select>
                 </div>
-                <div className='flex flex-center gap-[20px]'>
-                    <button className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] hover:bg-black hover:text-white' onClick={saveOrder}>{selectedRecipeId ? "update" : "add"} my recipe</button>
-                    <button type='submit' className='border-[1px] border-black px-[40px] py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] transition-all hover:bg-black hover:text-white' onClick={() => { setIsAddingRecipe(false); setIsEditingRecipe(false);}}>cancel</button>
+                <div className='flex flex-center flex-col md:flex-row gap-[10px] md:gap-[20px]'>
+                    <button className='border-[1px] border-black px-[20px] py-[5px] md:px-[40px] md:py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] hover:bg-black hover:text-white' onClick={saveOrder}>{selectedRecipeId ? "update" : "add"} my recipe</button>
+                    <button type='submit' className='border-[1px] border-black px-[20px] py-[5px] md:px-[40px] md:py-[10px] uppercase text-[14px] font-poppins-semi-bold tracking-[1px] transition-all hover:bg-black hover:text-white' onClick={() => { setIsAddingRecipe(false); setIsEditingRecipe(false);}}>cancel</button>
                 </div>
             </form>
         </section>

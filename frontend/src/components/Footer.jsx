@@ -6,13 +6,18 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <footer className='border-border-gray border-t-[1px]'>
-        <div className='padding-container flex justify-between max-container-nav'>
+        <div className='px-[20px] py-[20px] md:padding-container gap-[20px] flex justify-between max-container-nav'>
             <div>
-                <Link to="/" className='text-[36px] leading-[110%]' onClick={() => window.scrollTo({ top: 0 })}>GOO<br/>D<br/>FOO<br/>D</Link>
+                <Link to="/" className='text-[22px] md:text-[36px] leading-[110%]' onClick={() => window.scrollTo({ top: 0 })}>GOO<br/>D<br/>FOO<br/>D</Link>
             </div>
             <div>
                 <h3 className='text-[14px] font-poppins-semi-bold tracking-[2px] mb-[15px]'>Info</h3>
-                <p className='text-gray64 text-[12px] tracking-[1px]'>Contacts, privacy, cookie policy</p>
+                <p className='hidden md:block text-gray64 text-left text-[12px] tracking-[1px]'>Contacts, privacy, cookie policy</p>
+                <div className='md:hidden text-gray64 text-left text-[12px] tracking-[1px]'>
+                    <p>Contacts</p>
+                    <p>privacy</p>
+                    <p>coockie policy</p>
+                </div>
             </div>
             <div>
                 <h3 className='text-[14px] font-poppins-semi-bold tracking-[2px] mb-[15px]'>Social</h3>
