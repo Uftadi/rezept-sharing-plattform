@@ -11,28 +11,8 @@ function AddRecipeForm() {
         time, setTime,
         difficulty, setDifficulty,
         selectedRecipeId, image, setImage, isEditingRecipe, setIsEditingRecipe} = useContext(UserContext);
-        const missingFields = [];
-        if (nameInput === "") {
-            missingFields.push("Title");
-          }
-          if (produkten === "") {
-            missingFields.push("Ingredients");
-          }
-          if (steps === "") {
-            missingFields.push("Steps");
-          }
-          if (time === "") {
-            missingFields.push("Time");
-          }
-          if (difficulty === "") {
-            missingFields.push("Difficulty");
-          }
-      
-          if (missingFields.length > 0) {
-            const missingFieldsString = missingFields.join(', ');
-            alert(`The following fields must be filled out: ${missingFieldsString}`);
-            return;
-          }
+        
+        
       
 
     return (
