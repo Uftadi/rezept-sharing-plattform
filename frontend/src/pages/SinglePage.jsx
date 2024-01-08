@@ -14,7 +14,11 @@ import heart from "../assets/Heart.svg";
 import heartHover from "../assets/Heart-Hover.svg";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
-function SinglePage() {
+import {useParams} from "react-router-dom";
+
+function SinglePage({mealIdProp}) {
+	let { id } = useParams();
+
 	const navigate = useNavigate();
 	const { mealId, setMealId } = useContext(RecipeContext);
 	const [singleMeal, setSingleMeal] = useState([]);
@@ -22,9 +26,15 @@ function SinglePage() {
 	const [isHeartActive, setIsActiveHeart] = useState(false);
 	const url = "https://rezept-share-plattform.onrender.com";
 	useEffect(() => {
+		// mealId wird standardmäßig aus den Props geladen. Und wenn sie in den props nicht vorhanden ist, aus dem context
 		(async function fetchMealById() {
+			let lookupId = "";
+			if(id){
+				lookupId = id;
+				setMealId(id);
+			}
 			const response = await fetch(
-				`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+				`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${lookupId}`
 			);
 			const data = await response.json();
 			setSingleMeal(data);
