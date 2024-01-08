@@ -10,7 +10,8 @@ function AddRecipeForm() {
         steps, setSteps,
         time, setTime,
         difficulty, setDifficulty,
-        selectedRecipeId, image, setImage, isEditingRecipe, setIsEditingRecipe, missingFields} = useContext(UserContext);
+        selectedRecipeId, image, setImage, isEditingRecipe, setIsEditingRecipe} = useContext(UserContext);
+        const missingFields = [];
         if (nameInput === "") {
             missingFields.push("Title");
           }
